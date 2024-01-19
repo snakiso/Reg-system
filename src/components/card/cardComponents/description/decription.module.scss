@@ -1,0 +1,10 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  max-width: 420px;
+
+  span {
+    color: var(--color_secondary);
+  }
+}

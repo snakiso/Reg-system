@@ -1,0 +1,40 @@
+.personLine {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 20px;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1280px;
+  padding: 12px 0;
+
+  background: var(--color_reg_no);
+  border-radius: 4px;
+
+  &.active {
+    background: var(--color_reg_yes);
+  }
+}
+
+.text {
+  grid-column: 7 span;
+  padding-left: 8px;
+
+  &.active {
+    color: var(--color_secondary);
+  }
+}
+
+.table {
+  grid-column: 1 span;
+
+  &.active {
+    color: var(--color_secondary);
+  }
+}
+
+.icons {
+  display: flex;
+  grid-column: 4 span;
+  column-gap: 60px;
+}

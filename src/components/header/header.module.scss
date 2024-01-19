@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.headerImg {
+  max-width: 200px;
+  object-fit: cover;
+}

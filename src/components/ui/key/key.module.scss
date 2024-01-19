@@ -1,0 +1,22 @@
+.key {
+  all: unset;
+
+  cursor: pointer;
+
+  padding: 6px 12px;
+
+  background-color: var(--color_secondary_2);
+  border: 1px solid var(--color_secondary_2);
+  border-radius: 4px;
+
+  &:active {
+    color: var(--color_action);
+    background: none;
+    border: 1px solid var(--color_action);
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
