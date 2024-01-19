@@ -3,7 +3,7 @@ import { Typography } from "@/components/ui/typography";
 
 function App() {
   return (
-    <Button>
+    <Button variant={"primary"}>
       <Typography as={"span"} variant={"body2m"}>
         Click
       </Typography>
