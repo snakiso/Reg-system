@@ -29,7 +29,7 @@ export const Card = ({
       <div className={s.cardDescription}>
         <Description description={organization} title={"Организация"} />
         <Description description={position} title={"Должность"} />
-        <Description description={phone} title={"Номер телефона"} />
+        <Description description={phone} title={"Номер мобильного"} />
         <Description description={`${id}`} title={"ID"} />
       </div>
       <div className={s.cardButtons}>
