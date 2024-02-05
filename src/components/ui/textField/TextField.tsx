@@ -1,21 +1,20 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 import { SearchIcon } from "@/assets/icons/searchIcon";
 
 import s from "./textField.module.scss";
 
-export const TextField = () => {
-  const [value, setValue] = useState("");
+type TextFieldProps = {
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+};
 
-  const changeValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
-  };
-
+export const TextField = ({ onChange, value }: TextFieldProps) => {
   return (
     <div className={s.box}>
       <input
         className={s.textField}
-        onChange={changeValueHandler}
+        onChange={onChange}
         placeholder={"Искать по ФИО"}
         type={"text"}
         value={value}

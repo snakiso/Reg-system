@@ -7,22 +7,33 @@ import { clsx } from "clsx";
 import s from "./ownInfo.module.scss";
 
 type OwnInfoProps = {
-  checked: boolean;
+  name: string;
+  photo: string;
+  registered: boolean;
+  secondName: string;
   table: string;
+  thirdName: string;
 };
 
-export const OwnInfo = ({ checked, table }: OwnInfoProps) => {
+export const OwnInfo = ({
+  name,
+  photo,
+  registered,
+  secondName,
+  table,
+  thirdName,
+}: OwnInfoProps) => {
   const classNames = {
-    status: clsx(s.status, checked ? s.active : s.unactive),
+    status: clsx(s.status, registered ? s.active : s.unactive),
   };
 
   return (
     <div className={s.ownInfo}>
-      <PhotoIcon />
+      {photo ? <img alt={""} src={photo} /> : <PhotoIcon />}
       <div>
         <Typography variant={"body1m"}>Стол № {table}</Typography>
         <div className={classNames.status}>
-          {checked ? (
+          {registered ? (
             <>
               {" "}
               <CheckIcon />
@@ -36,9 +47,9 @@ export const OwnInfo = ({ checked, table }: OwnInfoProps) => {
           )}
         </div>
         <div className={s.name}>
-          <Typography variant={"body1s"}>ЕРМИЛОВА</Typography>
-          <Typography variant={"body1s"}>Марина</Typography>
-          <Typography variant={"body1s"}>Петровна</Typography>
+          <Typography variant={"body1s"}>{thirdName}</Typography>
+          <Typography variant={"body1s"}>{name}</Typography>
+          <Typography variant={"body1s"}>{secondName}</Typography>
         </div>
       </div>
     </div>

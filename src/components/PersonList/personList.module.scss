@@ -1,0 +1,39 @@
+@import "@/styles/breakpoints";
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  max-width: 1310px;
+  margin: 20px auto 40px;
+  padding: 0 15px;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 20px;
+  align-items: center;
+}
+
+.data {
+  grid-column: 7 span;
+}
+
+.table {
+  @include mobile {
+    grid-column: 2 span;
+    text-align: center;
+  }
+
+  grid-column: 1 span;
+}
+
+.actions {
+  @include mobile {
+    grid-column: 11/1 span;
+  }
+
+  grid-column: 3 span;
+}

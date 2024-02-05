@@ -9,6 +9,10 @@
     padding: 6px 12px;
   }
 
+  @include mobile {
+    padding: 6px 12px;
+  }
+
   all: unset;
   cursor: pointer;
   border-radius: 4px;

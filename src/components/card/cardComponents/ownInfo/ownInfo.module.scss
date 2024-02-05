@@ -1,4 +1,15 @@
+@import "@/styles/breakpoints";
+
 .ownInfo {
+  @include mobile {
+    column-gap: 10px;
+
+    svg {
+      max-width: 120px;
+      height: 100%;
+    }
+  }
+
   display: flex;
   column-gap: 30px;
 }

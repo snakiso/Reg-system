@@ -1,11 +1,13 @@
 .box {
   position: relative;
-  width: 100%;
+  max-width: 1310px;
+  margin: 40px auto 20px;
+  padding: 0 15px;
 
   svg {
     position: absolute;
     top: 50%;
-    left: 8px;
+    left: 22px;
     transform: translateY(-50%);
   }
 }
@@ -13,7 +15,7 @@
 .textField {
   all: unset;
 
-  width: 100%;
+  width: calc(100% - 35px);
   height: 50px;
   padding-left: 35px;
 

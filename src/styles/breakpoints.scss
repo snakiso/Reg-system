@@ -18,7 +18,7 @@ $screen-lg-min: 1440px;
 
 // Medium devices
 @mixin tablet {
-  @media (min-width: #{$screen-sm-max}) and (max-width: #{$screen-md}) {
+  @media (min-width: #{$screen-sm}) and (max-width: #{$screen-md}) {
     @content;
   }
 }

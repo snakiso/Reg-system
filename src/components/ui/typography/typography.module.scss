@@ -25,6 +25,14 @@
       var(--font-weight-medium)
     );
   }
+
+  @include mobile {
+    @include typography(
+      var(--font-size-l),
+      var(--line-height-l),
+      var(--font-weight-medium)
+    );
+  }
 }
 
 .body0s {
@@ -37,6 +45,14 @@
   }
 
   @include tablet {
+    @include typography(
+      var(--font-size-l),
+      var(--line-height-m),
+      var(--font-weight-semibold)
+    );
+  }
+
+  @include mobile {
     @include typography(
       var(--font-size-l),
       var(--line-height-m),
@@ -61,6 +77,14 @@
       var(--font-weight-semibold)
     );
   }
+
+  @include mobile {
+    @include typography(
+      var(--font-size-s),
+      var(--line-height-xs),
+      var(--font-weight-semibold)
+    );
+  }
 }
 
 .body1m {
@@ -73,6 +97,14 @@
   }
 
   @include tablet {
+    @include typography(
+      var(--font-size-s),
+      var(--line-height-xs),
+      var(--font-weight-medium)
+    );
+  }
+
+  @include mobile {
     @include typography(
       var(--font-size-s),
       var(--line-height-xs),
@@ -97,6 +129,14 @@
       var(--font-weight-semibold)
     );
   }
+
+  @include mobile {
+    @include typography(
+      var(--font-size-xs),
+      var(--line-height-xs),
+      var(--font-weight-semibold)
+    );
+  }
 }
 
 .body2m {
@@ -115,18 +155,38 @@
       var(--font-weight-medium)
     );
   }
+
+  @include mobile {
+    @include typography(
+      var(--font-size-xs),
+      var(--line-height-xs),
+      var(--font-weight-medium)
+    );
+  }
 }
 
 .body3r {
-  @include typography(
-    var(--font-size-xxs),
-    var(--line-height-xxs),
-    var(--font-weight-regular)
-  );
+  @include desktop {
+    @include typography(
+      var(--font-size-xs),
+      var(--line-height-xs),
+      var(--font-weight-regular)
+    );
+  }
 
-  @include typography(
-    var(--font-size-xs),
-    var(--line-height-xs),
-    var(--font-weight-regular)
-  );
+  @include tablet {
+    @include typography(
+      var(--font-size-xxs),
+      var(--line-height-xxs),
+      var(--font-weight-regular)
+    );
+  }
+
+  @include mobile {
+    @include typography(
+      var(--font-size-xxs),
+      var(--line-height-xxs),
+      var(--font-weight-regular)
+    );
+  }
 }

@@ -1,12 +1,22 @@
+import { ComponentPropsWithoutRef } from "react";
+
 import { ArrowIcon } from "@/assets/icons/arrowIcon";
 import { Typography } from "@/components/ui/typography";
 import * as SelectRadix from "@radix-ui/react-select";
 
 import s from "./select.module.scss";
 
-export const Select = () => {
+export const Select = ({
+  defaultValue,
+  onValueChange,
+  value,
+}: ComponentPropsWithoutRef<typeof SelectRadix.Root>) => {
   return (
-    <SelectRadix.Root>
+    <SelectRadix.Root
+      defaultValue={defaultValue}
+      onValueChange={onValueChange}
+      value={value}
+    >
       <SelectRadix.Trigger className={s.select}>
         <SelectRadix.Value
           defaultValue={"all"}
