@@ -8,7 +8,7 @@ import { DynamicStyles } from "@/styles/DynamicStyles";
 
 export function App() {
   const { data } = useGetParticipantQuery(undefined, {
-    //  pollingInterval: 5000,
+    pollingInterval: 1000,
   });
   const dispatch = useAppDispatch();
 
