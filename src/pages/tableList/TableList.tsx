@@ -4,34 +4,36 @@ import { PersonList } from "@/components/PersonList/PersonList";
 import { Keyboard } from "@/components/keyboard";
 import { Key } from "@/components/ui/key";
 import { useGetParticipantQuery } from "@/services/baseApi";
-import { Participant } from "@/services/secvices.type";
+import { Participant } from "@/services/services.type";
 
 export const TableList = () => {
-  const [currentTable, setCurrentTable] = useState("1");
+  const [currentTable, setCurrentTable] = useState("");
   const [keyBoardHeight, setKeyBoardHeight] = useState(0);
-  const { data } = useGetParticipantQuery();
+  const { data } = useGetParticipantQuery(undefined, {
+    pollingInterval: 1000,
+  });
   let filteredParticipants: Participant[] = [];
-  let tableNumber: string[] = [];
   const divRef: Ref<HTMLDivElement> = useRef(null);
 
   if (data) {
-    filteredParticipants = data?.filter((el) => el.table === currentTable);
-    tableNumber = [...new Set(data?.map((el) => el.table))].sort(
-      (a, b) => Number(a) - Number(b),
+    filteredParticipants = data?.participant.filter(
+      (el) => el.table === currentTable,
     );
   }
 
   useEffect(() => {
     const table = localStorage.getItem("table");
 
-    if (divRef.current) {
-      setKeyBoardHeight(divRef.current.clientHeight);
-    }
-    if (table) {
-      setCurrentTable(JSON.parse(table));
-    } else {
-      setCurrentTable(tableNumber[0]);
-      localStorage.setItem("table", JSON.stringify(tableNumber[0]));
+    if (data) {
+      if (divRef.current) {
+        setKeyBoardHeight(divRef.current.clientHeight);
+      }
+      if (table && table !== "undefined") {
+        setCurrentTable(JSON.parse(table));
+      } else {
+        setCurrentTable(data.table[0]);
+        localStorage.setItem("table", JSON.stringify(data.table[0]));
+      }
     }
   }, [data, divRef]);
 
@@ -47,8 +49,12 @@ export const TableList = () => {
         marginBottom={keyBoardHeight}
       />
       <Keyboard ref={divRef} title={"Выберите стол"}>
-        {tableNumber?.map((el) => (
-          <Key key={el} keyDown={() => ClickHandler(el)}>
+        {data?.table?.map((el) => (
+          <Key
+            isActive={el === currentTable}
+            key={el}
+            keyDown={() => ClickHandler(el)}
+          >
             {el}
           </Key>
         ))}

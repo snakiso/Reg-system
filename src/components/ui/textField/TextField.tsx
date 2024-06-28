@@ -16,7 +16,7 @@ export const TextField = ({ onChange, value }: TextFieldProps) => {
         className={s.textField}
         onChange={onChange}
         placeholder={"Искать по ФИО"}
-        type={"text"}
+        type={"search"}
         value={value}
       />
       <SearchIcon />

@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
+import { SettingsContext } from "@/app/App";
 import { CheckIcon } from "@/assets/icons/checkIcon";
 import { ListIcon } from "@/assets/icons/listIcon";
-import { PersonIcon } from "@/assets/icons/personIcon";
 import { Card } from "@/components/card";
 import { PopUp } from "@/components/popUp";
 import { IconButton } from "@/components/ui/iconButton";
 import { Typography } from "@/components/ui/typography";
-import { Participant } from "@/services/secvices.type";
+import { useUpdateParticipantMutation } from "@/services/baseApi";
+import { Participant } from "@/services/services.type";
 import { clsx } from "clsx";
 
 import s from "./personLine.module.scss";
@@ -17,6 +18,8 @@ type PersonLineProps = {
 };
 
 export const PersonLine = ({ data }: PersonLineProps) => {
+  const settings = useContext(SettingsContext);
+  const [update] = useUpdateParticipantMutation();
   const [openInfo, setOpenInfo] = useState(false);
   const [openPopup, setOpenPopup] = useState(false);
   const classNames = {
@@ -25,20 +28,34 @@ export const PersonLine = ({ data }: PersonLineProps) => {
     text: clsx(s.text, data.registered && s.active),
   };
 
+  const confirmRegistration = () => {
+    if (settings?.confirm) {
+      setOpenPopup(true);
+    } else {
+      const id = data.id;
+
+      update({ id, registered: true });
+    }
+  };
+
   return (
     <>
-      <Card
-        close={() => setOpenInfo(false)}
-        data={data}
-        id={data.id}
-        open={openInfo}
-      />
-      <PopUp
-        close={() => setOpenPopup(false)}
-        id={data.id}
-        isOpen={openPopup}
-        title={"Подтвердить регистрацию?"}
-      />
+      {openInfo && (
+        <Card
+          close={() => setOpenInfo(false)}
+          data={data}
+          id={data.id}
+          open={openInfo}
+        />
+      )}
+      {openPopup && (
+        <PopUp
+          close={() => setOpenPopup(false)}
+          id={data.id}
+          isOpen={openPopup}
+          title={"Подтвердить регистрацию?"}
+        />
+      )}
       {(openInfo || openPopup) && <div className={s.darkBg}></div>}
       <div className={classNames.personLine}>
         <div className={classNames.text}>
@@ -47,22 +64,28 @@ export const PersonLine = ({ data }: PersonLineProps) => {
           </Typography>
           <Typography variant={"body3r"}>{data.position}</Typography>
         </div>
-        <div className={classNames.table}>
-          <Typography variant={"body1s"}>{data.table}</Typography>
-        </div>
-        <div className={s.icons}>
-          {data.registered ? (
-            <IconButton className={s.check}>
-              <CheckIcon />
-            </IconButton>
-          ) : (
-            <IconButton onClick={() => setOpenPopup(true)}>
-              <ListIcon />
-            </IconButton>
+        <div className={settings?.table ? s.personLineGroup : undefined}>
+          {settings?.table && (
+            <div className={classNames.table}>
+              <Typography variant={"body1s"}>{data.table}</Typography>
+            </div>
           )}
-          <IconButton onClick={() => setOpenInfo(true)}>
-            <PersonIcon />
-          </IconButton>
+          <div className={s.icons}>
+            {data.registered ? (
+              <IconButton className={s.check}>
+                <CheckIcon />
+              </IconButton>
+            ) : (
+              <IconButton onClick={confirmRegistration}>
+                <span className={s.accessButton}></span>
+                {/*<ListIcon />*/}
+              </IconButton>
+            )}
+            <IconButton onClick={() => setOpenInfo(true)}>
+              <ListIcon />
+              {/*<PersonIcon />*/}
+            </IconButton>
+          </div>
         </div>
       </div>
     </>

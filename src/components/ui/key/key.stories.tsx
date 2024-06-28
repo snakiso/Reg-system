@@ -16,6 +16,7 @@ export const OneKey: Story = {
   args: {
     children: "B",
     disabled: false,
+    isActive: true,
   },
 };
 
@@ -23,5 +24,6 @@ export const DisabledOneKey: Story = {
   args: {
     children: "B",
     disabled: true,
+    isActive: false,
   },
 };

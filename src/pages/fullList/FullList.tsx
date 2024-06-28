@@ -3,17 +3,17 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { PersonList } from "@/components/PersonList/PersonList";
 import { Select } from "@/components/ui/select";
 import { TextField } from "@/components/ui/textField";
-import { Participant } from "@/services/secvices.type";
-import { useAppSelector } from "@/services/store";
+import { useGetParticipantQuery } from "@/services/baseApi";
+import { Participant } from "@/services/services.type";
 
 import s from "./fullList.module.scss";
 
 type IsRegistered = "all" | "check" | "uncheck";
 
 export const FullList = () => {
-  const participants = useAppSelector(
-    (state) => state.participantList.participants,
-  );
+  const { data: participants, isSuccess } = useGetParticipantQuery(undefined, {
+    pollingInterval: 1000,
+  });
   let resultData: Participant[] = [];
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Participant[]>([]);
@@ -26,16 +26,22 @@ export const FullList = () => {
 
   const changeSelectValue = (value: IsRegistered) => {
     setSelectValue(value);
-    if (value === "check") {
-      resultData = participants.filter((item) => item.registered);
-      setSelectValue("check");
-      setSearchResults(resultData);
-    } else if (value === "uncheck") {
-      resultData = participants.filter((item) => !item.registered);
-      setSelectValue("uncheck");
-      setSearchResults(resultData);
-    } else {
-      setSearchResults(participants);
+    if (isSuccess) {
+      if (value === "check") {
+        resultData = participants?.participant.filter(
+          (item) => item.registered,
+        );
+        setSelectValue("check");
+        setSearchResults(resultData);
+      } else if (value === "uncheck") {
+        resultData = participants?.participant.filter(
+          (item) => !item.registered,
+        );
+        setSelectValue("uncheck");
+        setSearchResults(resultData);
+      } else {
+        setSearchResults(participants.participant);
+      }
     }
   };
 
@@ -44,13 +50,15 @@ export const FullList = () => {
   }, [participants]);
 
   const search = (query: string) => {
-    resultData = participants.filter(
-      (item) =>
-        item.name.toLowerCase().startsWith(query.toLowerCase()) ||
-        item.thirdName.toLowerCase().startsWith(query.toLowerCase()),
-    );
-    setSelectValue("all");
-    setSearchResults(resultData);
+    if (isSuccess) {
+      resultData = participants.participant.filter(
+        (item) =>
+          item.name.toLowerCase().startsWith(query.toLowerCase()) ||
+          item.thirdName.toLowerCase().startsWith(query.toLowerCase()),
+      );
+      setSelectValue("all");
+      setSearchResults(resultData);
+    }
   };
 
   return (

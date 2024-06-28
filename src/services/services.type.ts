@@ -31,3 +31,15 @@ export type Participant = {
   table: string;
   thirdName: string;
 };
+
+export type ParticipantResponse = {
+  letters: string[];
+  participant: Participant[];
+  table: string[];
+};
+
+export type SettingsData = {
+  confirm: boolean;
+  photo: boolean;
+  table: boolean;
+};

@@ -3,7 +3,7 @@ import { Description } from "@/components/card/cardComponents/description";
 import { OwnInfo } from "@/components/card/cardComponents/ownInfo/OwnInfo";
 import { Button } from "@/components/ui/button";
 import { useUpdateParticipantMutation } from "@/services/baseApi";
-import { Participant } from "@/services/secvices.type";
+import { Participant } from "@/services/services.type";
 import { clsx } from "clsx";
 
 import s from "./card.module.scss";
