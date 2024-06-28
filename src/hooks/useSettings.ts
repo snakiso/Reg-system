@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { SettingsData } from "@/services/services.type";
+import { SettingsData } from "../services/services.type";
 
 export const useSettings = () => {
   const [settings, setSettings] = useState<SettingsData>();

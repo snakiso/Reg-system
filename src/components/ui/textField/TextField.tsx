@@ -1,8 +1,8 @@
 import { ChangeEvent } from "react";
 
-import { SearchIcon } from "@/assets/icons/searchIcon";
-
 import s from "./textField.module.scss";
+
+import { SearchIcon } from "../../../assets/icons/searchIcon";
 
 type TextFieldProps = {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;

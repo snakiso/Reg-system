@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Typography } from "@/components/ui/typography";
-import { useUpdateParticipantMutation } from "@/services/baseApi";
 import { clsx } from "clsx";
 
 import s from "./popUp.module.scss";
+
+import { useUpdateParticipantMutation } from "../../services/baseApi";
+import { Button } from "../ui/button";
+import { Typography } from "../ui/typography";
 
 type PopUpProps = {
   close: () => void;

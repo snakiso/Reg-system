@@ -1,8 +1,8 @@
 import { ReactNode, Ref, forwardRef } from "react";
 
-import { Typography } from "@/components/ui/typography";
-
 import s from "./keyboard.module.scss";
+
+import { Typography } from "../ui/typography";
 
 type KeyboardProps = {
   children?: ReactNode;

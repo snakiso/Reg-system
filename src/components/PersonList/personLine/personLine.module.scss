@@ -1,4 +1,4 @@
-@import "@/styles/breakpoints";
+@import "../../../styles/breakpoints";
 
 .personLine {
   display: flex;
@@ -55,7 +55,7 @@
 }
 
 .check {
-  background: none;
+  background: none !important;
 }
 
 .darkBg {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Key } from "@/components/ui/key/Key";
+import { Key } from "./Key";
 
 const meta = {
   argTypes: {},

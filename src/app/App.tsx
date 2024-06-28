@@ -1,11 +1,11 @@
 import { createContext, useEffect } from "react";
 import { Helmet } from "react-helmet";
 
-import { Router } from "@/app/router/router";
-import { useSettings } from "@/hooks/useSettings";
-import { useGetStylesQuery } from "@/services/baseApi";
-import { SettingsData } from "@/services/services.type";
-import { DynamicStyles } from "@/styles/DynamicStyles";
+import { useSettings } from "../hooks/useSettings";
+import { useGetStylesQuery } from "../services/baseApi";
+import { SettingsData } from "../services/services.type";
+import { DynamicStyles } from "../styles/DynamicStyles";
+import { Router } from "./router/router";
 
 export const SettingsContext = createContext<SettingsData | undefined>(
   undefined,

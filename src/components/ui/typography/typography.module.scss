@@ -1,4 +1,4 @@
-@import "@/styles/breakpoints";
+@import "../../../styles/breakpoints";
 
 @mixin typography($fontSize, $lineHeight, $fontWeight) {
   margin: 0;

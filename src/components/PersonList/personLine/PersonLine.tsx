@@ -1,17 +1,18 @@
 import { useContext, useState } from "react";
 
-import { SettingsContext } from "@/app/App";
-import { CheckIcon } from "@/assets/icons/checkIcon";
-import { ListIcon } from "@/assets/icons/listIcon";
-import { Card } from "@/components/card";
-import { PopUp } from "@/components/popUp";
-import { IconButton } from "@/components/ui/iconButton";
-import { Typography } from "@/components/ui/typography";
-import { useUpdateParticipantMutation } from "@/services/baseApi";
-import { Participant } from "@/services/services.type";
 import { clsx } from "clsx";
 
 import s from "./personLine.module.scss";
+
+import { SettingsContext } from "../../../app/App";
+import { CheckIcon } from "../../../assets/icons/checkIcon";
+import { ListIcon } from "../../../assets/icons/listIcon";
+import { useUpdateParticipantMutation } from "../../../services/baseApi";
+import { Participant } from "../../../services/services.type";
+import { Card } from "../../card";
+import { PopUp } from "../../popUp";
+import { IconButton } from "../../ui/iconButton";
+import { Typography } from "../../ui/typography";
 
 type PersonLineProps = {
   data: Participant;

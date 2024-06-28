@@ -1,12 +1,12 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
-import { PersonList } from "@/components/PersonList/PersonList";
-import { Select } from "@/components/ui/select";
-import { TextField } from "@/components/ui/textField";
-import { useGetParticipantQuery } from "@/services/baseApi";
-import { Participant } from "@/services/services.type";
-
 import s from "./fullList.module.scss";
+
+import { PersonList } from "../../components/PersonList/PersonList";
+import { Select } from "../../components/ui/select";
+import { TextField } from "../../components/ui/textField";
+import { useGetParticipantQuery } from "../../services/baseApi";
+import { Participant } from "../../services/services.type";
 
 type IsRegistered = "all" | "check" | "uncheck";
 
