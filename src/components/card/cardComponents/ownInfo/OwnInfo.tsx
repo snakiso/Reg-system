@@ -1,3 +1,6 @@
+import { useContext } from "react";
+
+import { SettingsContext } from "@/app/App";
 import { CheckIcon } from "@/assets/icons/checkIcon";
 import { PhotoIcon } from "@/assets/icons/photoIcon";
 import { UncheckIcon } from "@/assets/icons/uncheckIcon";
@@ -8,7 +11,7 @@ import s from "./ownInfo.module.scss";
 
 type OwnInfoProps = {
   name: string;
-  photo: string;
+  photo?: string;
   registered: boolean;
   secondName: string;
   table: string;
@@ -23,15 +26,21 @@ export const OwnInfo = ({
   table,
   thirdName,
 }: OwnInfoProps) => {
+  const settings = useContext(SettingsContext);
+
   const classNames = {
     status: clsx(s.status, registered ? s.active : s.unactive),
   };
 
   return (
     <div className={s.ownInfo}>
-      {photo ? <img alt={""} src={photo} /> : <PhotoIcon />}
+      {settings?.photo &&
+        (photo ? <img alt={""} src={photo} /> : <PhotoIcon />)}
       <div>
-        <Typography variant={"body1m"}>Стол № {table}</Typography>
+        {settings?.table && (
+          <Typography variant={"body1m"}>Стол № {table}</Typography>
+        )}
+
         <div className={classNames.status}>
           {registered ? (
             <>

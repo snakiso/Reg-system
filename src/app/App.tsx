@@ -1,27 +1,34 @@
-import { useEffect } from "react";
+import { createContext, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 import { Router } from "@/app/router/router";
-import { useGetParticipantQuery } from "@/services/baseApi";
-import { setData } from "@/services/participantList-reducer";
-import { useAppDispatch } from "@/services/store";
+import { useSettings } from "@/hooks/useSettings";
+import { useGetStylesQuery } from "@/services/baseApi";
+import { SettingsData } from "@/services/services.type";
 import { DynamicStyles } from "@/styles/DynamicStyles";
 
+export const SettingsContext = createContext<SettingsData | undefined>(
+  undefined,
+);
+
 export function App() {
-  const { data } = useGetParticipantQuery(undefined, {
-    pollingInterval: 1000,
-  });
-  const dispatch = useAppDispatch();
+  const { data: app } = useGetStylesQuery();
+
+  const settings = useSettings();
 
   useEffect(() => {
-    if (data) {
-      dispatch(setData({ data }));
-    }
-  }, [data]);
+    console.log(settings);
+  }, [settings]);
 
   return (
     <>
+      <Helmet>
+        <title>{app?.event_title}</title>
+      </Helmet>
       <DynamicStyles />
-      <Router />
+      <SettingsContext.Provider value={settings}>
+        <Router />
+      </SettingsContext.Provider>
     </>
   );
 }

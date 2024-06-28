@@ -1,4 +1,8 @@
-import { Participant, StylesResponse } from "@/services/secvices.type";
+import {
+  Participant,
+  ParticipantResponse,
+  StylesResponse,
+} from "@/services/services.type";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
@@ -12,9 +16,37 @@ export const baseApi = createApi({
   }),
   endpoints: (builder) => {
     return {
-      getParticipant: builder.query<Participant[], void>({
+      getParticipant: builder.query<ParticipantResponse, void>({
         providesTags: ["Participant"],
         query: () => `participant/`,
+        transformResponse: (response: Participant[]): ParticipantResponse => {
+          const sortedData = response.sort((a, b) =>
+            a.thirdName.localeCompare(b.thirdName),
+          );
+
+          const arrivedGuests = sortedData.filter((el) => el.registered);
+          const nonArrivedGuests = sortedData.filter((el) => !el.registered);
+          const letters = [
+            ...new Set(
+              sortedData
+                .map((el) => el.thirdName[0])
+                .sort((a, b) => a.localeCompare(b)),
+            ),
+          ];
+          const tables = [
+            ...new Set(
+              sortedData
+                .map((el) => el.table)
+                .sort((a, b) => Number(a) - Number(b)),
+            ),
+          ];
+
+          return {
+            letters: letters,
+            participant: [...nonArrivedGuests, ...arrivedGuests],
+            table: tables,
+          };
+        },
       }),
       getStyles: builder.query<StylesResponse, void>({
         query: () => `styles.php`,

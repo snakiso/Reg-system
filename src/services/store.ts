@@ -1,6 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-import { participantListReducer } from "@/services/participantList-reducer";
 import { configureStore } from "@reduxjs/toolkit";
 
 import { baseApi } from "./baseApi";
@@ -10,7 +9,6 @@ export const store = configureStore({
     getDefaultMiddleware().concat(baseApi.middleware),
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-    participantList: participantListReducer,
   },
 });
 

@@ -5,12 +5,14 @@ import { AlphabetList } from "@/pages/alphabetList/AlphabetList";
 import { FullList } from "@/pages/fullList/FullList";
 import { TableList } from "@/pages/tableList/TableList";
 
+console.log("router.tsx");
+
 export const router = createBrowserRouter([
   {
     children: [
       {
         element: <FullList />,
-        path: "/",
+        path: "/list",
       },
       {
         element: <AlphabetList />,
@@ -18,7 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         element: <TableList />,
-        path: "/tableList",
+        path: "/table",
       },
     ],
     element: <Layout />,

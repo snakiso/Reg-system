@@ -11,29 +11,15 @@
 }
 
 .tableHeader {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
   column-gap: 20px;
   align-items: center;
+  justify-content: space-between;
 }
 
-.data {
-  grid-column: 7 span;
-}
-
-.table {
-  @include mobile {
-    grid-column: 2 span;
-    text-align: center;
-  }
-
-  grid-column: 1 span;
-}
-
-.actions {
-  @include mobile {
-    grid-column: 11/1 span;
-  }
-
-  grid-column: 3 span;
+.tableHeaderGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 260px;
 }

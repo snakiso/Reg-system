@@ -1,0 +1,12 @@
+.bgLayout {
+  position: fixed;
+  z-index: -1;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background-image: var(--app-background);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 190px;
+}

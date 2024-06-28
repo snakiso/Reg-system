@@ -21,7 +21,7 @@ export const DynamicStyles = () => {
       root.style.setProperty("--color_error", styles.colors.error);
       root.style.setProperty("--color_warning", styles.colors.warning);
       root.style.setProperty("--color_success", styles.colors.success);
-      root.style.setProperty("--app-background", styles.background);
+      root.style.setProperty("--app-background", `url(${styles.background})`);
     }
   }, [styles]);
 
