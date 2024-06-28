@@ -1,6 +1,6 @@
-import { Typography } from "@/components/ui/typography";
-
 import s from "./decription.module.scss";
+
+import { Typography } from "../../../ui/typography";
 
 type DescriptionProps = {
   description: string;

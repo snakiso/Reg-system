@@ -1,9 +1,10 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { Typography } from "@/components/ui/typography";
 import { clsx } from "clsx";
 
 import s from "./key.module.scss";
+
+import { Typography } from "../typography";
 
 export type KeyProps = {
   children?: ReactNode;

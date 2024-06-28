@@ -1,10 +1,11 @@
 import { ComponentPropsWithoutRef } from "react";
 
-import { ArrowIcon } from "@/assets/icons/arrowIcon";
-import { Typography } from "@/components/ui/typography";
 import * as SelectRadix from "@radix-ui/react-select";
 
 import s from "./select.module.scss";
+
+import { ArrowIcon } from "../../../assets/icons/arrowIcon";
+import { Typography } from "../typography";
 
 export const Select = ({
   defaultValue,

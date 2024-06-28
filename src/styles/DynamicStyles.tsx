@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useGetStylesQuery } from "@/services/baseApi";
+import { useGetStylesQuery } from "../services/baseApi";
 
 export const DynamicStyles = () => {
   const { data: styles } = useGetStylesQuery();

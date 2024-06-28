@@ -1,11 +1,11 @@
 import { useContext } from "react";
 
-import { SettingsContext } from "@/app/App";
-import { PersonLine } from "@/components/PersonList/personLine";
-import { Typography } from "@/components/ui/typography";
-import { Participant } from "@/services/services.type";
-
 import s from "./personList.module.scss";
+
+import { SettingsContext } from "../../app/App";
+import { Participant } from "../../services/services.type";
+import { Typography } from "../ui/typography";
+import { PersonLine } from "./personLine";
 
 type PersonListProps = {
   data: Participant[];

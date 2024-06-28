@@ -1,9 +1,10 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import {
   Participant,
   ParticipantResponse,
   StylesResponse,
-} from "@/services/services.type";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+} from "./services.type";
 
 export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
@@ -24,8 +25,8 @@ export const baseApi = createApi({
             a.thirdName.localeCompare(b.thirdName),
           );
 
-          const arrivedGuests = sortedData.filter((el) => el.registered);
-          const nonArrivedGuests = sortedData.filter((el) => !el.registered);
+          // const arrivedGuests = sortedData.filter((el) => el.registered);
+          // const nonArrivedGuests = sortedData.filter((el) => !el.registered);
           const letters = [
             ...new Set(
               sortedData
@@ -43,7 +44,7 @@ export const baseApi = createApi({
 
           return {
             letters: letters,
-            participant: [...nonArrivedGuests, ...arrivedGuests],
+            participant: [...sortedData],
             table: tables,
           };
         },

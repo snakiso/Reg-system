@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 
-import { Header } from "@/components/layout/header";
-import { Links } from "@/components/layout/links/Links";
-
 import s from "./layout.module.scss";
+
+import { Header } from "./header";
+import { Links } from "./links/Links";
 
 console.log("layout.tsx");
 

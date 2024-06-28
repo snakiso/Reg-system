@@ -10,15 +10,15 @@ export default defineConfig({
   // define: {
   //   global: "window",
   // },
-  // plugins: [
-  //   react(),
-  //   //reactRefresh(),
-  //   // legacy({
-  //   //   additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
-  //   //   targets: ["Chrome >= 50", "Safari >= 5"],
-  //   // }),
-  // ],
-  resolve: {
-    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
-  },
+  plugins: [
+    react(),
+    //   //reactRefresh(),
+    //   // legacy({
+    //   //   additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+    //   //   targets: ["Chrome >= 50", "Safari >= 5"],
+    //   // }),
+  ],
+  // resolve: {
+  //   alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+  // },
 });

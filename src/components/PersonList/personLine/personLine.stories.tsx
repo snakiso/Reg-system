@@ -1,5 +1,6 @@
-import { PersonLine } from "@/components/PersonList/personLine/PersonLine";
 import { Meta, StoryObj } from "@storybook/react";
+
+import { PersonLine } from "./PersonLine";
 
 const meta = {
   argTypes: {},

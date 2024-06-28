@@ -1,10 +1,10 @@
 import { Ref, useEffect, useRef, useState } from "react";
 
-import { PersonList } from "@/components/PersonList/PersonList";
-import { Keyboard } from "@/components/keyboard";
-import { Key } from "@/components/ui/key";
-import { useGetParticipantQuery } from "@/services/baseApi";
-import { Participant } from "@/services/services.type";
+import { PersonList } from "../../components/PersonList/PersonList";
+import { Keyboard } from "../../components/keyboard";
+import { Key } from "../../components/ui/key";
+import { useGetParticipantQuery } from "../../services/baseApi";
+import { Participant } from "../../services/services.type";
 
 export const AlphabetList = () => {
   const [currentLetter, setCurrentLetter] = useState<string>("");

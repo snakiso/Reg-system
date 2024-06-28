@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { Typography } from "@/components/ui/typography";
-import { useGetStylesQuery } from "@/services/baseApi";
-
 import s from "./header.module.scss";
+
+import { useGetStylesQuery } from "../../../services/baseApi";
+import { Typography } from "../../ui/typography";
 
 export const Header = () => {
   const { data } = useGetStylesQuery();

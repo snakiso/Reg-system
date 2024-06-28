@@ -1,13 +1,14 @@
 import { useContext } from "react";
 
-import { SettingsContext } from "@/app/App";
-import { CheckIcon } from "@/assets/icons/checkIcon";
-import { PhotoIcon } from "@/assets/icons/photoIcon";
-import { UncheckIcon } from "@/assets/icons/uncheckIcon";
-import { Typography } from "@/components/ui/typography";
 import { clsx } from "clsx";
 
 import s from "./ownInfo.module.scss";
+
+import { SettingsContext } from "../../../../app/App";
+import { CheckIcon } from "../../../../assets/icons/checkIcon";
+import { PhotoIcon } from "../../../../assets/icons/photoIcon";
+import { UncheckIcon } from "../../../../assets/icons/uncheckIcon";
+import { Typography } from "../../../ui/typography";
 
 type OwnInfoProps = {
   name: string;
