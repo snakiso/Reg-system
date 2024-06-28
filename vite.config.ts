@@ -7,16 +7,16 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   base: "./",
-  // define: {
-  //   global: "window",
-  // },
+  define: {
+    global: "window",
+  },
   plugins: [
     react(),
-    //   //reactRefresh(),
-    //   // legacy({
-    //   //   additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
-    //   //   targets: ["Chrome >= 50", "Safari >= 5"],
-    //   // }),
+    reactRefresh(),
+    legacy({
+      additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+      targets: ["Chrome >= 50", "Safari >= 5"],
+    }),
   ],
   // resolve: {
   //   alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],

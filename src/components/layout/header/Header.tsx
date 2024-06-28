@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import s from "./header.module.scss";
 
@@ -10,9 +10,9 @@ export const Header = () => {
 
   return (
     <header className={s.header}>
-      <Link to={"/list"}>
+      <NavLink to={"alphabet"}>
         <img alt={""} className={s.headerImg} src={data?.logo} />
-      </Link>
+      </NavLink>
       <Typography className={s.headerTitle} variant={"h1"}>
         {data?.event_title}
       </Typography>
